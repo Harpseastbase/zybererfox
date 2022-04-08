@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "2eKj8YKQZZ5cY9Su1DWrPO1QxRKtdE3i9JUG/dlBzRc=",
+  "Source": "zyberfox.challenge.api",
+  "BasePath": "_content/zyberfox.challenge.api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

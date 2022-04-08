@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using zyberfox.challenge.api.Model;
 
 namespace zyberfox.challenge.api.Controllers
 {
@@ -7,36 +11,70 @@ namespace zyberfox.challenge.api.Controllers
     [Produces("application/json")]
     public class UserController : Controller
     {
+        /// <summary>
+        ///  Creates a new user
+        /// </summary>
+        /// <param name="users">User request</param>
+        /// <returns> Returns status 200 Code</returns>
+        /// <response code="200"> User created </response>
+        /// 
+
         [HttpPost]
-        public IActionResult CreateUser()
+        public IActionResult CreateUser(Users users)
         {
-            return Ok();
+
+            bool result = Users.AddUser(users,"Add");
+            
+            if (result)
+                return StatusCode(200);
+
+            return StatusCode(400);
         }
 
         [HttpGet]
-        public IActionResult GetUsers()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public List<UserUpdate> GetUsers()
         {
-            return Ok();
+            return UserUpdate
+                .GetUsers();
         }
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult GetUser()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesDefaultResponseType]
+        public UserUpdate GetUser(string id)
         {
-            return Ok();
+            return UserUpdate
+                .GetUser(id);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public IActionResult DeleteUser()
+        public IActionResult DeleteUser(string id)
         {
-            return Ok();
+            bool result = UserUpdate
+                .DeleteUser(id);
+
+            if (result)
+                return StatusCode(200);
+
+            return StatusCode(400);
+
         }
 
         [HttpPut]
-        public IActionResult PutUser()
+        [Route("{id}")]
+        public IActionResult PutUser(Users getUser)
         {
-            return Ok();
+            bool result = Users.AddUser( getUser,"Update");
+
+            if (result)
+                return StatusCode(200);
+
+            return StatusCode(400);
+
         }
     }
 }
