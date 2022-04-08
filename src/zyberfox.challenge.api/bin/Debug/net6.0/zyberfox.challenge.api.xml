@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>zyberfox.challenge.api</name>
+    </assembly>
+    <members>
+        <member name="M:zyberfox.challenge.api.Controllers.UserController.CreateUser(zyberfox.challenge.api.Model.Users)">
+            <summary>
+             Creates a new user
+            </summary>
+            <param name="users">User request</param>
+            <returns> Returns status 200 Code</returns>
+            <response code="200"> User created </response>
+            
+        </member>
+    </members>
+</doc>
